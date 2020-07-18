@@ -67,6 +67,7 @@ function init() {
     crearPiso();
     divMapa();
     listenPersonajeMovimiento();
+    agregandoCasas()
 }
 
 // ============================= Luces
@@ -115,7 +116,7 @@ function divMapa() {
         [0, 1, 0, 1, 0, 0, 0, 0, 0, 0],
         [0, 0, 0, 0, 0, 0, 1, 0, 1, 0],
         [0, 1, 0, 1, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 1, 0, 1, 0],
+        [0, 1, 0, 0, 0, 0, 1, 0, 1, 0],
         [0, 1, 0, 1, 0, 0, 0, 0, 0, 0]
     ];
     var espacioGeo = new THREE.BoxGeometry(ancho, 1, ancho);
@@ -274,6 +275,27 @@ function animate() {
     var delta = clock.getDelta();
     animatePersonaje(delta);
 }
+/*
+*************************************************************************************************
+ * agregando casas
+/************************************************************************************************
+*/
+
+function agregandoCasas(){
+    // casas de alejandro q
+    // casa_aq();
+    // casa_bq();
+    // casa_cq();
+    // casas de aNGI q
+
+    // casas de wilder q
+
+
+}
+
+
+
+
 
 /*
 *************************************************************************************************

@@ -69,24 +69,39 @@ function init() {
     divMapa();
     listenPersonajeMovimiento();
 
+    agregarObjetos();
+
 }
 
 // ============================= Luces
 
 function addLights() {
-    var light = new THREE.DirectionalLight(0xffffff);
-    light.position.set(1, 1, 1);
+    // var light = new THREE.DirectionalLight(0xffffff);
+    // light.position.set(1, 1, 1);
+    // scene.add(light);
+    // var lightTwo = new THREE.DirectionalLight(0xffffff, .5);
+    // lightTwo.position.set(1, -1, -1);
+    // scene.add(lightTwo);
+    var light = new THREE.AmbientLight(0x404040); // soft white light
     scene.add(light);
-    var lightTwo = new THREE.DirectionalLight(0xffffff, .5);
-    lightTwo.position.set(1, -1, -1);
-    scene.add(lightTwo);
+    foco(240, 190);
+    foco(-100, -90);
+    foco(160, -90);
+    foco(120, -250);
+    foco(-40, -270);
 
-    var light = new THREE.PointLight(0xffffff, 1, 500);
-    light.position.set(-20, 50, -170);
-    scene.add(light);
+    foco(-360, -270);
+    foco(-220, -270);
+    foco(-400, 50);
+    foco(-220, 50);
+
 
 }
-
+function foco(x, z) {
+    var light = new THREE.PointLight(0xffffff, 1, 200);
+    light.position.set(x, 50, z);
+    scene.add(light);
+}
 // ============================= Piso
 function crearPiso() {
     // Creaar piso geometria y material
@@ -128,50 +143,52 @@ function divMapa() {
     const ancho = 20; //ancho y profundidad
     const alto = 20
     const mapa = [
-        [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-        [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-        [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-        [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-        [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-        [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-        [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-        [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-        [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-        [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-        [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-        [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 3, 3, 3, 3, 3, 9, 3, 3, 3, 3, 3, 3, 3, 3, 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-        [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 3, 3, 3, 1, 1, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-        [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1],
-        [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1],
+        [1, 1, 4, 4, 1, 4, 4, 1, 1, 4, 4, 1, 4, 4, 1, 1, 1, 1, 4, 4, 1, 4, 4, 1, 1, 4, 4, 1, 4, 4, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+        [1, 5, 6, 6, 6, 6, 6, 6, 5, 6, 6, 6, 6, 6, 6, 5, 1, 5, 3, 3, 3, 3, 3, 5, 5, 3, 3, 3, 3, 3, 3, 5, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+        [1, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 1, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+        [1, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 1, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+        [1, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 1, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+        [1, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 1, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+        [1, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 1, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+        [1, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 1, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+        [1, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 1, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+        [1, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 1, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+        [1, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 1, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+        [1, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 5, 1, 5, 3, 3, 3, 3, 3, 5, 5, 3, 3, 3, 3, 3, 3, 5, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+        [1, 6, 6, 6, 6, 6, 6, 6, 5, 6, 6, 6, 1, 6, 6, 1, 1, 1, 4, 4, 4, 1, 1, 1, 1, 4, 4, 4, 1, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+        [1, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1],
+        [1, 5, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1],
         [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1],
-        [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1],
-        [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1],
-        [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 2, 1],
-        [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1],
-        [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1],
-        [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1],
-        [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1],
-        [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1],
-        [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1],
-        [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1],
-        [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1],
-        [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1],
-        [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 2, 2, 2, 2, 0, 1, 1, 1, 1, 1, 1, 1],
-        [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 2, 2, 2, 2, 0, 1, 1, 1, 1, 1, 1, 1],
-        [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1],
-        [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 2, 2, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1],
-        [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 2, 2, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1],
-        [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 2, 2, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1],
-        [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 2, 2, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1],
-        [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1],
-        [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1],
-        [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1],
-        [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 1, 2, 2, 2, 1],
+        [1, 5, 6, 6, 6, 6, 6, 6, 5, 6, 6, 6, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1],
+        [1, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1],
+        [1, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 2, 1],
+        [1, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 5, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1],
+        [1, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1],
+        [1, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1],
+        [1, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1],
+        [1, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1],
+        [1, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1],
+        [1, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1],
+        [1, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1],
+        [1, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1],
+        [1, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1],
+        [1, 5, 6, 6, 6, 6, 6, 6, 5, 6, 6, 6, 6, 6, 6, 5, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1],
+        [1, 1, 1, 4, 4, 1, 4, 4, 1, 1, 4, 1, 4, 4, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 2, 2, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 1, 2, 2, 2, 1],
     ];
 
     // geometria y metarial de la pared
     var paredGeoBaja = new THREE.BoxGeometry(ancho, alto, ancho);
     var paredGeoAlta = new THREE.BoxGeometry(ancho, alto * 2, ancho);
+    // geometria y metarial de la pared con ventana
+    var paredGeoAltaVen = new THREE.BoxGeometry(ancho, alto / 2, ancho);
     var paredMat1 = new THREE.MeshPhongMaterial({
         color: 0xC0392B,
     });
@@ -189,8 +206,18 @@ function divMapa() {
     var pisoMaderaGeo = new THREE.BoxGeometry(ancho, 2, ancho);
     var texturemadera = new THREE.TextureLoader().load('images/pisomadera.jpg');
     var pisoMaderaMat = new THREE.MeshPhongMaterial({ map: texturemadera });
-    // el mapa sera dividido 
 
+    // bloque Interiror
+    var bloqueGeo = new THREE.BoxGeometry(ancho, alto * 3, ancho);
+    var bloqueMat = new THREE.MeshPhongMaterial({
+        color: 0xF1C40F,
+    });
+    // mat y geo de pasillo
+    var pisoaulaGeo = new THREE.BoxGeometry(ancho, 2, ancho);
+    var textureaula = new THREE.TextureLoader().load('images/pisoaula.png');
+    var pisoaulaMat = new THREE.MeshPhongMaterial({ map: textureaula });
+
+    // el mapa sera dividido 
     const mapaFila = mapa.length;
     const mapaColumna = mapa[0].length;
     // mapaSize=mapaFila*mapaColumna;
@@ -209,7 +236,7 @@ function divMapa() {
                     paredbaja.position.y = alto / 2;
                     // console.log("=>" + pared.position.x + " / " + pared.position.y + " / " + pared.position.z)
                     scene.add(paredbaja);
-                    paredbaja.geometry.faces[5].color.setHex(0x00ff00);
+
 
                     let paredalta = new THREE.Mesh(paredGeoAlta, paredMat2);
                     paredalta.position.x = (j - mapaColumna / 2) * ancho;
@@ -232,12 +259,45 @@ function divMapa() {
                     pisoMadera.position.y = 2 / 2;
                     scene.add(pisoMadera);
                     break;
+                case 4:
+                    let paredbaja2 = new THREE.Mesh(paredGeoBaja, paredMat1);
+
+                    paredbaja2.position.x = (j - mapaColumna / 2) * ancho;
+                    paredbaja2.position.z = (i - mapaFila / 2) * ancho;
+                    paredbaja2.position.y = alto / 2;
+                    // console.log("=>" + pared.position.x + " / " + pared.position.y + " / " + pared.position.z)
+                    scene.add(paredbaja2);
+
+                    let paredalta2 = new THREE.Mesh(paredGeoAltaVen, paredMat2);
+                    paredalta2.position.x = (j - mapaColumna / 2) * ancho;
+                    paredalta2.position.z = (i - mapaFila / 2) * ancho;
+                    paredalta2.position.y = ((10 * 1) / 2) + alto;
+
+                    scene.add(paredalta2);
+                    break;
+                case 5:
+                    let bloqueInterior = new THREE.Mesh(bloqueGeo, bloqueMat);
+
+                    bloqueInterior.position.x = (j - mapaColumna / 2) * ancho;
+                    bloqueInterior.position.z = (i - mapaFila / 2) * ancho;
+                    bloqueInterior.position.y = (alto * 3) / 2;
+                    // console.log("=>" + pared.position.x + " / " + pared.position.y + " / " + pared.position.z)
+                    scene.add(bloqueInterior);
+                    break;
+
+                case 6:
+                    let pisoaula = new THREE.Mesh(pisoaulaGeo, pisoaulaMat);
+                    pisoaula.position.x = (j - mapaColumna / 2) * ancho;
+                    pisoaula.position.z = (i - mapaFila / 2) * ancho;
+                    pisoaula.position.y = 2 / 2;
+                    scene.add(pisoaula);
+                    break;
             }
 
 
             if (mapa[i][j] == 9) {
                 // referencia de possion
-                console.log("i " + i + "  j " + j)
+                // console.log("i " + i + "  j " + j)
                 console.log("x " + (j - mapaColumna / 2) * ancho + "  z " + (i - mapaFila / 2) * ancho)
             }
 
@@ -245,7 +305,7 @@ function divMapa() {
         }
     }
 
-    paredInterior(20,60);
+    paredInterior(20, 60);
 }
 // ============================= escucha de teclas presionadas para el movimiento 
 function listenPersonajeMovimiento() {
@@ -364,22 +424,178 @@ function animate() {
  * agregando objetos
 /************************************************************************************************
 */
-function paredInterior(ancho,alto) {
-    let paredGeo = new THREE.BoxGeometry(ancho*12, alto, 1);
-    let paredMat = new THREE.MeshBasicMaterial({
+function paredInterior(ancho, alto) {
+    let paredGeo = new THREE.BoxGeometry(20 * 12, 20, 1);
+    let paredMat = new THREE.MeshPhongMaterial({
         color: 0xF9E79F,
-        opacity: 0.5,
-        transparent: true,
+        // opacity: 0.5,
+        // transparent: true,
     });
 
-    let paredInterior = new THREE.Mesh(paredGeo, paredMat);
-    paredInterior.position.x = -10
-    paredInterior.position.z = -170+10
-    paredInterior.position.y = alto/2
-    scene.add(paredInterior)
+    let paredInterior11 = new THREE.Mesh(paredGeo, paredMat);
+    paredInterior11.position.x = -10
+    paredInterior11.position.z = -170 + 10
+    paredInterior11.position.y = 20 / 2
+    scene.add(paredInterior11)
+
+    let paredGeo12 = new THREE.BoxGeometry(20 * 13, 20, 1);
+    let paredInterior12 = new THREE.Mesh(paredGeo12, paredMat);
+    paredInterior12.position.x = 20
+    paredInterior12.position.z = -380
+    paredInterior12.position.y = 20 / 2
+    scene.add(paredInterior12)
+
+    let paredGeo13 = new THREE.BoxGeometry(1, 20, 20 * 9);
+    let paredInterior13 = new THREE.Mesh(paredGeo13, paredMat);
+    paredInterior13.position.x = -130
+    paredInterior13.position.z = -270
+    paredInterior13.position.y = 20 / 2
+    scene.add(paredInterior13)
+
+    // let paredGeo14 = new THREE.BoxGeometry(1, 20, 20*9);
+    let paredInterior14 = new THREE.Mesh(paredGeo13, paredMat);
+    paredInterior14.position.x = 160 + 10
+    paredInterior14.position.z = -270
+    paredInterior14.position.y = 20 / 2
+    scene.add(paredInterior14)
+
 
 }
 
+function puertaAscensor() {
+
+    let texture = new THREE.TextureLoader().load('images/ascensor.png');
+    let mat = new THREE.MeshPhongMaterial({ map: texture });
+    let geo = new THREE.BoxGeometry(1, 50, 20 * 2);
+
+    let ascensoruno = new THREE.Mesh(geo, mat);
+    ascensoruno.position.x = 350
+    ascensoruno.position.z = 260
+    ascensoruno.position.y = 50 / 2
+    scene.add(ascensoruno)
+
+    let geo2 = new THREE.BoxGeometry(20 * 2, 50, 1);
+    let ascensordos = new THREE.Mesh(geo2, mat);
+    ascensordos.position.x = 250
+    ascensordos.position.z = 360
+    ascensordos.position.y = 50 / 2
+    scene.add(ascensordos)
+
+}
+function puertas() {
+
+    let texture = new THREE.TextureLoader().load('images/dospuertas.png');
+    let mat = new THREE.MeshPhongMaterial({ map: texture });
+    let geo = new THREE.BoxGeometry(1, 50, 20 * 3);
+
+    let dospuertas = new THREE.Mesh(geo, mat);
+    dospuertas.position.x = 180
+    dospuertas.position.z = 270
+    dospuertas.position.y = 50 / 2
+    scene.add(dospuertas)
+
+    // unapuerta 
+    let texture2 = new THREE.TextureLoader().load('images/puerta2.png');
+    let mat2 = new THREE.MeshPhongMaterial({ map: texture2 });
+    let geo2 = new THREE.BoxGeometry(1, 50, 20 * 1);
+
+    let puerta = new THREE.Mesh(geo2, mat2);
+    puerta.position.x = 290
+    puerta.position.z = 190
+    puerta.position.y = 50 / 2
+    scene.add(puerta)
+
+    // 
+    let geo3 = new THREE.BoxGeometry(20 * 1, 50, 1);
+
+    let puerta1 = new THREE.Mesh(geo3, mat2);
+    puerta1.position.x = 240
+    puerta1.position.z = -140
+    puerta1.position.y = 50 / 2
+    scene.add(puerta1)
+    // 
+
+    let puerta2 = new THREE.Mesh(geo3, mat2);
+    puerta2.position.x = 120
+    puerta2.position.z = -150
+    puerta2.position.y = 50 / 2
+    scene.add(puerta2)
+
+
+    let puerta22 = new THREE.Mesh(geo3, mat2);
+    puerta22.position.x = 150
+    puerta22.position.z = -160
+    puerta22.position.y = 50 / 2
+    puerta22.rotation.y = degreesToRadians(90);
+    scene.add(puerta22)
+    puerta
+
+
+
+}
+
+function ventanas() {
+    let texture = new THREE.TextureLoader().load('images/ventanapas.png');
+    let mat = new THREE.MeshPhongMaterial({
+        map: texture, opacity: 0.9,
+        transparent: true,
+    });
+    let geo = new THREE.BoxGeometry(20 * 3, 30, 20);
+
+    let ventanapas = new THREE.Mesh(geo, mat);
+    ventanapas.position.x = -80
+    ventanapas.position.z = -150
+    ventanapas.position.y = 45
+    scene.add(ventanapas)
+    let ventanapas2 = new THREE.Mesh(geo, mat);
+    ventanapas2.position.x = 60
+    ventanapas2.position.z = -150
+    ventanapas2.position.y = 45
+    scene.add(ventanapas2)
+
+
+
+}
+function persianas() {
+    let texture = new THREE.TextureLoader().load('images/persiana.png');
+    let mat = new THREE.MeshPhongMaterial({
+        map: texture, opacity: 0.9,
+        transparent: true,
+    });
+    let geo = new THREE.BoxGeometry(20 * 2, 30, 20);
+
+    let persiana11 = new THREE.Mesh(geo, mat);
+    persiana11.position.x = -90
+    persiana11.position.z = -390
+    persiana11.position.y = 45
+    scene.add(persiana11)
+
+    let persiana12 = new THREE.Mesh(geo, mat);
+    persiana12.position.x = -30
+    persiana12.position.z = -390
+    persiana12.position.y = 45
+    scene.add(persiana12)
+
+    let persiana13 = new THREE.Mesh(geo, mat);
+    persiana13.position.x = 50
+    persiana13.position.z = -390
+    persiana13.position.y = 45
+    scene.add(persiana13)
+
+    let persiana14 = new THREE.Mesh(geo, mat);
+    persiana14.position.x = 110
+    persiana14.position.z = -390
+    persiana14.position.y = 45
+    scene.add(persiana14)
+
+}
+
+function agregarObjetos() {
+    puertaAscensor();
+    puertas();
+    ventanas();
+    persianas();
+}
 /*
 *************************************************************************************************
  * lLAMADA DE funciones

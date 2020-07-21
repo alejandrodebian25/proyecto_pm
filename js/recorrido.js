@@ -459,6 +459,27 @@ function paredInterior(ancho, alto) {
     paredInterior14.position.y = 20 / 2
     scene.add(paredInterior14)
 
+    crearParedInterior(20 * 13, 0.5, -300, -380);
+    crearParedInterior(20 * 10, 0.5, -330, -100);
+    crearParedInterior(0.5, 20 * 12, -450, -240);
+    crearParedInterior(0.5, 20 * 9, -150, -270);
+
+    crearParedInterior(20 * 10, 0.5, -330, -80);
+    crearParedInterior(20 * 13, 0.5, -300, 200);
+    crearParedInterior(0.5, 20 * 12, -450, 60);
+    crearParedInterior(0.5, 20 * 9, -150, 90);
+
+
+}
+function crearParedInterior(ancho, grosor, x, z) {
+    let paredGeo = new THREE.BoxGeometry(ancho, 20, grosor);
+    let paredMat = new THREE.MeshPhongMaterial({ color: 0xF9E79F, });
+    let paredInterior = new THREE.Mesh(paredGeo, paredMat);
+    paredInterior.position.x = x
+    paredInterior.position.z = z
+    paredInterior.position.y = 20 / 2
+    scene.add(paredInterior)
+
 
 }
 
@@ -587,9 +608,32 @@ function persianas() {
     persiana14.position.z = -390
     persiana14.position.y = 45
     scene.add(persiana14)
+    crearPersiana(20 * 2, -410, -390);
+    crearPersiana(20 * 2, -350, -390);
+    crearPersiana(20 * 2, -270, -390);
+    crearPersiana(20 * 2, -210, -390);
+
+    crearPersiana(20 * 2, -390, 210);
+    crearPersiana(20 * 2, -330, 210);
+    crearPersiana(20 * 1, -260, 210);
+    crearPersiana(20 * 2, -210, 210);
 
 }
+function crearPersiana(ancho, x, z) {
+    let texture = new THREE.TextureLoader().load('images/persiana.png');
+    let mat = new THREE.MeshPhongMaterial({
+        map: texture, opacity: 0.9,
+        transparent: true,
+    });
+    let geo = new THREE.BoxGeometry(ancho, 30, 20);
 
+    let persiana = new THREE.Mesh(geo, mat);
+    persiana.position.x = x
+    persiana.position.z = z
+    persiana.position.y = 45
+    scene.add(persiana)
+
+}
 function agregarObjetos() {
     puertaAscensor();
     puertas();

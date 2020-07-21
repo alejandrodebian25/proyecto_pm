@@ -142,7 +142,7 @@ function degreesToRadians(degrees) {
 function divMapa() {
     const ancho = 20; //ancho y profundidad
     const alto = 20
-    
+
     const mapa = [
         [1, 1, 4, 4, 1, 4, 4, 1, 1, 4, 4, 1, 4, 4, 1, 1, 1, 1, 4, 4, 1, 4, 4, 1, 1, 4, 4, 1, 4, 4, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         [1, 5, 6, 6, 6, 6, 6, 6, 5, 6, 6, 6, 6, 6, 6, 5, 1, 5, 3, 3, 3, 3, 3, 5, 5, 3, 3, 3, 3, 3, 3, 5, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
@@ -162,7 +162,7 @@ function divMapa() {
         [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1],
         [1, 5, 6, 6, 6, 6, 6, 6, 5, 6, 6, 6, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1],
         [1, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1],
-        [1, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 2, 1],
+        [1, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 1, 6, 6, 1, 1, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 2, 1],
         [1, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 5, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1],
         [1, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1],
         [1, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1],
@@ -483,7 +483,21 @@ function crearParedInterior(ancho, grosor, x, z) {
 
 
 }
+function tarimas() {
+    crearTarima(30, 20 * 8, -120, -270)
+    crearTarima(30, 20 * 8, -440, -230)
+    crearTarima(30, 20 * 8, -440, 70)
+}
+function crearTarima(ancho, grosor, x, z) {
+    let tarimaGeo = new THREE.BoxGeometry(ancho, 16, grosor);
+    let tarimaMat = new THREE.MeshPhongMaterial({ color: 0x784212, });
+    let tarima = new THREE.Mesh(tarimaGeo, tarimaMat);
+    tarima.position.x = x
+    tarima.position.z = z
+    tarima.position.y = 16 / 2
+    scene.add(tarima)
 
+}
 function puertaAscensor() {
 
     let texture = new THREE.TextureLoader().load('images/ascensor.png');
@@ -550,10 +564,26 @@ function puertas() {
     puerta22.position.y = 50 / 2
     puerta22.rotation.y = degreesToRadians(90);
     scene.add(puerta22)
-    puerta
+    
+    crearPuerta(20,2,-200,-150);
+    crearPuerta(2,20,-170,-160);
+    
+    crearPuerta(2,20,-210,-20);
+    crearPuerta(20,2,-180,-30);
+    
+    crearPuerta(20,2,0,-30);
 
+}
+function crearPuerta(ancho,grosor,x,z){
+    let texture = new THREE.TextureLoader().load('images/puerta2.png');
+    let mat = new THREE.MeshPhongMaterial({ map: texture});
+    let geo = new THREE.BoxGeometry(ancho, 50, grosor);
 
-
+    let puerta = new THREE.Mesh(geo, mat);
+    puerta.position.x = x
+    puerta.position.z = z
+    puerta.position.y = 50 / 2
+    scene.add(puerta)
 }
 
 function ventanas() {
@@ -640,6 +670,7 @@ function agregarObjetos() {
     puertas();
     ventanas();
     persianas();
+    tarimas();
 }
 /*
 *************************************************************************************************

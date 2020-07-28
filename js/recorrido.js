@@ -23,7 +23,8 @@ var movDerecha = false;
 var personajeVelocidad = new THREE.Vector3();
 const VELOCIDAD = 800.0;
 
-
+// ============================= variables para la colision
+var colisionObjetos = []
 // ============================= variables para el DOM
 var bloqueo = document.getElementById('bloqueo');
 
@@ -52,11 +53,13 @@ function init() {
 
     //  camara posicion
     camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 1, 2000);
-    camera.position.y = 20; // Height the camera will be looking from
+    camera.position.y = 25; // Height the camera will be looking from
     camera.position.x = 0;
     camera.position.z = 0;
 
     scene.add(camera);
+
+
 
     controles = new THREE.PointerLockControls(camera);
     scene.add(controles.getObject());
@@ -70,6 +73,7 @@ function init() {
     listenPersonajeMovimiento();
 
     agregarObjetos();
+    window.addEventListener('resize', onWindowResize, false);
 
 }
 
@@ -171,7 +175,7 @@ function divMapa() {
         [1, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1],
         [1, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1],
         [1, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1],
-        [1, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1],
+        [1, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 7, 6, 6, 6, 6, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1],
         [1, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1],
         [1, 5, 6, 6, 6, 6, 6, 6, 5, 6, 6, 6, 6, 6, 6, 5, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1],
         [1, 1, 1, 4, 4, 1, 4, 4, 1, 1, 4, 1, 4, 4, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1],
@@ -223,55 +227,56 @@ function divMapa() {
     const mapaColumna = mapa[0].length;
     // mapaSize=mapaFila*mapaColumna;
     console.log("alto " + mapaFila + "ancho" + mapaColumna);
-
+    var posx = 0;
+    var posz = 0;
     for (var i = 0; i < mapaFila; i++) {
         for (var j = 0; j < mapaColumna; j++) {
-
+            posx = (j - mapaColumna / 2) * ancho;
+            posz = (i - mapaFila / 2) * ancho;
             switch (mapa[i][j]) {
                 case 1:
 
                     let paredbaja = new THREE.Mesh(paredGeoBaja, paredMat1);
 
-                    paredbaja.position.x = (j - mapaColumna / 2) * ancho;
-                    paredbaja.position.z = (i - mapaFila / 2) * ancho;
+                    paredbaja.position.x = posx;
+                    paredbaja.position.z = posz
                     paredbaja.position.y = alto / 2;
                     // console.log("=>" + pared.position.x + " / " + pared.position.y + " / " + pared.position.z)
                     scene.add(paredbaja);
-
-
+                    // colisionObjetos.push(paredbaja);
                     let paredalta = new THREE.Mesh(paredGeoAlta, paredMat2);
-                    paredalta.position.x = (j - mapaColumna / 2) * ancho;
-                    paredalta.position.z = (i - mapaFila / 2) * ancho;
+                    paredalta.position.x = posx;
+                    paredalta.position.z = posz
                     paredalta.position.y = ((alto * 2) / 2) + alto;
 
                     scene.add(paredalta);
                     break;
                 case 2:
                     let pisoPasillo = new THREE.Mesh(pasilloGeo, pasilloMat);
-                    pisoPasillo.position.x = (j - mapaColumna / 2) * ancho;
-                    pisoPasillo.position.z = (i - mapaFila / 2) * ancho;
+                    pisoPasillo.position.x = posx;
+                    pisoPasillo.position.z = posz;
                     pisoPasillo.position.y = 2 / 2;
                     scene.add(pisoPasillo)
                     break;
                 case 3:
                     let pisoMadera = new THREE.Mesh(pisoMaderaGeo, pisoMaderaMat);
-                    pisoMadera.position.x = (j - mapaColumna / 2) * ancho;
-                    pisoMadera.position.z = (i - mapaFila / 2) * ancho;
+                    pisoMadera.position.x = posx;
+                    pisoMadera.position.z = posz;
                     pisoMadera.position.y = 2 / 2;
                     scene.add(pisoMadera);
                     break;
                 case 4:
                     let paredbaja2 = new THREE.Mesh(paredGeoBaja, paredMat1);
 
-                    paredbaja2.position.x = (j - mapaColumna / 2) * ancho;
-                    paredbaja2.position.z = (i - mapaFila / 2) * ancho;
+                    paredbaja2.position.x = posx;
+                    paredbaja2.position.z = posz;
                     paredbaja2.position.y = alto / 2;
                     // console.log("=>" + pared.position.x + " / " + pared.position.y + " / " + pared.position.z)
                     scene.add(paredbaja2);
 
                     let paredalta2 = new THREE.Mesh(paredGeoAltaVen, paredMat2);
-                    paredalta2.position.x = (j - mapaColumna / 2) * ancho;
-                    paredalta2.position.z = (i - mapaFila / 2) * ancho;
+                    paredalta2.position.x = posx;
+                    paredalta2.position.z = posz;
                     paredalta2.position.y = ((10 * 1) / 2) + alto;
 
                     scene.add(paredalta2);
@@ -279,8 +284,8 @@ function divMapa() {
                 case 5:
                     let bloqueInterior = new THREE.Mesh(bloqueGeo, bloqueMat);
 
-                    bloqueInterior.position.x = (j - mapaColumna / 2) * ancho;
-                    bloqueInterior.position.z = (i - mapaFila / 2) * ancho;
+                    bloqueInterior.position.x = posx;
+                    bloqueInterior.position.z = posz;
                     bloqueInterior.position.y = (alto * 3) / 2;
                     // console.log("=>" + pared.position.x + " / " + pared.position.y + " / " + pared.position.z)
                     scene.add(bloqueInterior);
@@ -288,18 +293,21 @@ function divMapa() {
 
                 case 6:
                     let pisoaula = new THREE.Mesh(pisoaulaGeo, pisoaulaMat);
-                    pisoaula.position.x = (j - mapaColumna / 2) * ancho;
-                    pisoaula.position.z = (i - mapaFila / 2) * ancho;
+                    pisoaula.position.x = posx;
+                    pisoaula.position.z = posz;
                     pisoaula.position.y = 2 / 2;
                     scene.add(pisoaula);
+                    if ((i%2==1)&&(i >=2&&i<=13) && (j >= 4 && j <= 11))
+                        silla_am(posx, posz)
                     break;
             }
 
 
-            if (mapa[i][j] == 9) {
+            if (mapa[i][j] == 7) {
                 // referencia de possion
-                // console.log("i " + i + "  j " + j)
-                console.log("x " + (j - mapaColumna / 2) * ancho + "  z " + (i - mapaFila / 2) * ancho)
+                console.log("i " + i + "  j " + j)
+                silla_aa(posx,posz)
+                console.log("x " + posx + "  z " + posz)
             }
 
 
@@ -366,25 +374,32 @@ function animatePersonaje(delta) {
     personajeVelocidad.x -= personajeVelocidad.x * 10.0 * delta;
     personajeVelocidad.z -= personajeVelocidad.z * 10.0 * delta;
     // console.log("vx= "+personajeVelocidad.x * delta+ "vz ="+personajeVelocidad.z* delta)
-    if (movAdelante) {
-        personajeVelocidad.z -= VELOCIDAD * delta;
-    }
-    if (movAtras) {
-        personajeVelocidad.z += VELOCIDAD * delta;
-    }
-    if (movIzquierda) {
-        personajeVelocidad.x -= VELOCIDAD * delta;
-    }
-    if (movDerecha) {
-        personajeVelocidad.x += VELOCIDAD * delta;
-    }
-    if (!(movAdelante || movAtras || movIzquierda || movDerecha)) {
+    if (detectaColision() == false) {
+        if (movAdelante) {
+            personajeVelocidad.z -= VELOCIDAD * delta;
+        }
+        if (movAtras) {
+            personajeVelocidad.z += VELOCIDAD * delta;
+        }
+        if (movIzquierda) {
+            personajeVelocidad.x -= VELOCIDAD * delta;
+        }
+        if (movDerecha) {
+            personajeVelocidad.x += VELOCIDAD * delta;
+        }
+        if (!(movAdelante || movAtras || movIzquierda || movDerecha)) {
 
+            personajeVelocidad.x = 0;
+            personajeVelocidad.z = 0;
+        }
+
+        controles.getObject().translateX(personajeVelocidad.x * delta);
+        controles.getObject().translateZ(personajeVelocidad.z * delta);
+    }
+    else {
         personajeVelocidad.x = 0;
         personajeVelocidad.z = 0;
     }
-    controles.getObject().translateX(personajeVelocidad.x * delta);
-    controles.getObject().translateZ(personajeVelocidad.z * delta);
 }
 
 // ============================= Desbloqueo
@@ -411,6 +426,7 @@ function lockChange() {
 // ============================= Animacion
 
 function render() {
+
     renderer.render(scene, camera);
 }
 function animate() {
@@ -564,19 +580,19 @@ function puertas() {
     puerta22.position.y = 50 / 2
     puerta22.rotation.y = degreesToRadians(90);
     scene.add(puerta22)
-    
-    crearPuerta(20,2,-200,-150);
-    crearPuerta(2,20,-170,-160);
-    
-    crearPuerta(2,20,-210,-20);
-    crearPuerta(20,2,-180,-30);
-    
-    crearPuerta(20,2,0,-30);
+
+    crearPuerta(20, 2, -200, -150);
+    crearPuerta(2, 20, -170, -160);
+
+    crearPuerta(2, 20, -210, -20);
+    crearPuerta(20, 2, -180, -30);
+
+    crearPuerta(20, 2, 0, -30);
 
 }
-function crearPuerta(ancho,grosor,x,z){
+function crearPuerta(ancho, grosor, x, z) {
     let texture = new THREE.TextureLoader().load('images/puerta2.png');
-    let mat = new THREE.MeshPhongMaterial({ map: texture});
+    let mat = new THREE.MeshPhongMaterial({ map: texture });
     let geo = new THREE.BoxGeometry(ancho, 50, grosor);
 
     let puerta = new THREE.Mesh(geo, mat);
@@ -671,13 +687,87 @@ function agregarObjetos() {
     ventanas();
     persianas();
     tarimas();
+    silla_aa(0,0)
+
 }
+
+function onWindowResize() {
+
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
+
+    renderer.setSize(window.innerWidth, window.innerHeight);
+}
+
+
+//  Colisiones
+
+function detectaColision() {
+    const PERSONAJECOLISIONDISTANCIA = 20;
+    // The rotation matrix to apply to our direction vector
+    // Undefined by default to indicate ray should coming from front
+    var rotationMatrix;
+    // Get direction of camera
+    var cameraDirection = controles.getDirection(new THREE.Vector3(0, 0, 0)).clone();
+
+    // Check which direction we're moving (not looking)
+    // Flip matrix to that direction so that we can reposition the ray
+    if (movAtras) {
+        rotationMatrix = new THREE.Matrix4();
+        rotationMatrix.makeRotationY(degreesToRadians(180));
+    }
+    else if (movIzquierda) {
+        rotationMatrix = new THREE.Matrix4();
+        rotationMatrix.makeRotationY(degreesToRadians(90));
+    }
+    else if (movDerecha) {
+        rotationMatrix = new THREE.Matrix4();
+        rotationMatrix.makeRotationY(degreesToRadians(270));
+    }
+
+    // Player is not moving forward, apply rotation matrix needed
+    if (rotationMatrix !== undefined) {
+        cameraDirection.applyMatrix4(rotationMatrix);
+    }
+
+    // Apply ray to player camera
+    var rayCaster = new THREE.Raycaster(controles.getObject().position, cameraDirection);
+
+    // If our ray hit a collidable object, return true
+    if (rayIntersect(rayCaster, PERSONAJECOLISIONDISTANCIA)) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+function rayIntersect(ray, distancia) {
+    var interseccion = ray.intersectObjects(colisionObjetos);
+    for (var i = 0; i < interseccion.length; i++) {
+
+        // console.log(i + "  " + intersects[i].distance)
+        if (interseccion[i].distance < distancia) {
+            return true;
+        }
+    }
+    return false;
+}
+
+
+
+
 /*
+
+
+
+
+
 *************************************************************************************************
  * lLAMADA DE funciones
 /************************************************************************************************
 */
 
-getPointerLock();
+
 init();
 animate();
+getPointerLock();

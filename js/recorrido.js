@@ -175,11 +175,11 @@ function divMapa() {
         [1, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1],
         [1, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1],
         [1, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1],
-        [1, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 7, 6, 6, 6, 6, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1],
+        [1, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1],
         [1, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1],
         [1, 5, 6, 6, 6, 6, 6, 6, 5, 6, 6, 6, 6, 6, 6, 5, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1],
         [1, 1, 1, 4, 4, 1, 4, 4, 1, 1, 4, 1, 4, 4, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1],
-        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 2, 2, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 7, 2, 2, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1],
         [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1],
         [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1],
         [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1],
@@ -264,6 +264,14 @@ function divMapa() {
                     pisoMadera.position.z = posz;
                     pisoMadera.position.y = 2 / 2;
                     scene.add(pisoMadera);
+                    if ((i >= 2 && i <= 8 && i % 2 == 0) && (j >= 20 && j <= 30) && (j % 2 == 1)) {
+                        //   let pupitre=silla_aa(posx, posz) 
+                        silla_aa(posx, posz)
+                    }
+                    if ((i == 11) &&  (j >= 20 && j <= 25) && (j % 2 == 1)) {
+                        //   let pupitre=silla_aa(posx, posz) 
+                        silla_aa(posx, posz)
+                    }
                     break;
                 case 4:
                     let paredbaja2 = new THREE.Mesh(paredGeoBaja, paredMat1);
@@ -297,8 +305,12 @@ function divMapa() {
                     pisoaula.position.z = posz;
                     pisoaula.position.y = 2 / 2;
                     scene.add(pisoaula);
-                    if ((i%2==1)&&(i >=2&&i<=13) && (j >= 4 && j <= 11))
+                    if ((i % 2 == 1) && (i >= 2 && i <= 13) && (j >= 4 && j <= 11))
                         silla_am(posx, posz)
+                    if ((i >= 22 && i <= 30 && i % 3 == 0) && (j >= 3 && j <= 14) && (j % 2 == 1))
+                        silla_aa(posx, posz)
+                    if ((i == 19) && (j >= 3 && j <= 10) && (j % 2 == 1))
+                        silla_aa(posx, posz)
                     break;
             }
 
@@ -306,14 +318,14 @@ function divMapa() {
             if (mapa[i][j] == 7) {
                 // referencia de possion
                 console.log("i " + i + "  j " + j)
-                silla_aa(posx,posz)
+                // silla_aa(posx,posz)
                 console.log("x " + posx + "  z " + posz)
             }
 
 
         }
     }
-
+console.log(colisionObjetos.length)
     paredInterior(20, 60);
 }
 // ============================= escucha de teclas presionadas para el movimiento 
@@ -534,6 +546,65 @@ function puertaAscensor() {
     scene.add(ascensordos)
 
 }
+
+function casilleros(){
+    var materials = [
+        new THREE.MeshPhongMaterial({
+            map: THREE.ImageUtils.loadTexture('images/casilleros.jpg')
+        }),
+        new THREE.MeshPhongMaterial({
+            map: THREE.ImageUtils.loadTexture('images/casilleros.jpg')
+        }),
+        new THREE.MeshLambertMaterial({
+            map: THREE.ImageUtils.loadTexture('images/casillerosp.jpg')
+        }),
+        new THREE.MeshLambertMaterial({
+            map: THREE.ImageUtils.loadTexture('images/casillerosp.jpg')
+        }),
+        new THREE.MeshLambertMaterial({
+            map: THREE.ImageUtils.loadTexture('images/casillerosp.jpg')
+        }),
+        new THREE.MeshLambertMaterial({
+            map: THREE.ImageUtils.loadTexture('images/casillerosp.jpg')
+        })
+     ];
+
+
+    // let texture = new THREE.TextureLoader().load('images/casilleros.jpg');
+    // let mat = new THREE.MeshPhongMaterial({ map: texture });
+    let geo = new THREE.BoxGeometry(10, 50, 20 * 2);
+
+    let casilleroa = new THREE.Mesh(geo, materials);
+    casilleroa.position.set(195,50/2,190);
+    scene.add(casilleroa)
+
+    let casillerob = new THREE.Mesh(geo, materials);
+    casillerob.position.set(195,50/2,140);
+    scene.add(casillerob)
+    let casilleroc = new THREE.Mesh(geo, materials);
+    casilleroc.position.set(195,50/2,90);
+    scene.add(casilleroc)
+    let casillerod = new THREE.Mesh(geo, materials);
+    casillerod.position.set(195,50/2,40);
+    scene.add(casillerod)
+    let casilleroh = new THREE.Mesh(geo, materials);
+    casilleroh.position.set(195,50/2,340);
+    scene.add(casilleroh)
+
+    let casilleroe = new THREE.Mesh(geo, materials);
+    casilleroe.position.set(285,50/2,140);
+    scene.add(casilleroe)
+    let casillerof = new THREE.Mesh(geo, materials);
+    casillerof.position.set(285,50/2,90);
+    scene.add(casillerof)
+    let casillerog = new THREE.Mesh(geo, materials);
+    casillerog.position.set(285,50/2,40);
+    scene.add(casillerog)
+    let casilleroi = new THREE.Mesh(geo, materials);
+    casilleroi.position.set(420,50/2,330);
+    scene.add(casilleroi)
+   
+}
 function puertas() {
 
     let texture = new THREE.TextureLoader().load('images/dospuertas.png');
@@ -687,7 +758,7 @@ function agregarObjetos() {
     ventanas();
     persianas();
     tarimas();
-    silla_aa(0,0)
+    casilleros();
 
 }
 

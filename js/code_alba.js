@@ -1,10 +1,10 @@
-function silla_aa(x,z) {
+function silla_aa(x,z,) {
 
     let obj;
     let loader = new THREE.JSONLoader();
     loader.load('js/alba/silamoderna.json', function (g, m) {// a
         const alto=30;// a
-        const ancho =35;// a
+        const ancho =30;// a
 
         obj = new THREE.Mesh(g, m);
         obj.scale.set(ancho, alto,ancho);// a
@@ -16,5 +16,7 @@ function silla_aa(x,z) {
         obj.rotation.y= degreesToRadians(110);
         
         scene.add(obj);
+        
+        // return obj;
     });
 }

@@ -1,1 +1,1 @@
-##Proyecto - recorrido virtual
+## Proyecto Inf324 - Recorrido Virtual

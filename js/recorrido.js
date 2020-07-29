@@ -226,7 +226,11 @@ function divMapa() {
     const mapaFila = mapa.length;
     const mapaColumna = mapa[0].length;
     // mapaSize=mapaFila*mapaColumna;
-    console.log("alto " + mapaFila + "ancho" + mapaColumna);
+    // console.log("alto " + mapaFila + "ancho" + mapaColumna);
+
+
+
+
     var posx = 0;
     var posz = 0;
     for (var i = 0; i < mapaFila; i++) {
@@ -266,11 +270,11 @@ function divMapa() {
                     scene.add(pisoMadera);
                     if ((i >= 2 && i <= 8 && i % 2 == 0) && (j >= 20 && j <= 30) && (j % 2 == 1)) {
                         //   let pupitre=silla_aa(posx, posz) 
-                        silla_aa(posx, posz)
+                        silla_ba(posx, posz)
                     }
                     if ((i == 11) && (j >= 20 && j <= 25) && (j % 2 == 1)) {
                         //   let pupitre=silla_aa(posx, posz) 
-                        silla_aa(posx, posz)
+                        silla_ba(posx, posz)
                     }
                     break;
                 case 4:
@@ -281,6 +285,7 @@ function divMapa() {
                     paredbaja2.position.y = alto / 2;
                     // console.log("=>" + pared.position.x + " / " + pared.position.y + " / " + pared.position.z)
                     scene.add(paredbaja2);
+                    colisionObjetos.push(paredbaja2);
 
                     let paredalta2 = new THREE.Mesh(paredGeoAltaVen, paredMat2);
                     paredalta2.position.x = posx;
@@ -305,28 +310,30 @@ function divMapa() {
                     pisoaula.position.z = posz;
                     pisoaula.position.y = 2 / 2;
                     scene.add(pisoaula);
-                    if ((i % 2 == 1) && (i >= 2 && i <= 13) && (j >= 4 && j <= 11))
-                        silla_am(posx, posz)
-                    if ((i >= 22 && i <= 30 && i % 3 == 0) && (j >= 3 && j <= 14) && (j % 2 == 1))
-                        silla_aa(posx, posz)
+
+                    if ((i >= 22 && i <= 30 && i % 2 == 0) && (j >= 3 && j <= 14) && (j % 2 == 1))
+                        silla_ba(posx, posz)
                     if ((i == 19) && (j >= 3 && j <= 10) && (j % 2 == 1))
-                        silla_aa(posx, posz)
+                        silla_ba(posx, posz)
+                    if ((i % 2 == 1) && (i >= 2 && i <= 13) && (j >= 4 && j <= 11)) {
+                        silla_bm(posx, posz)
+                    }
                     break;
             }
 
 
             if (mapa[i][j] == 7) {
                 // referencia de possion
-                console.log("i " + i + "  j " + j)
-                // silla_aa(posx,posz)
-                console.log("x " + posx + "  z " + posz)
+                // console.log("i " + i + "  j " + j)
+
+                // console.log("x " + posx + "  z " + posz)
             }
 
 
         }
     }
-    console.log(colisionObjetos.length)
-    paredInterior(20, 60);
+    // console.log(colisionObjetos.length)
+    paredInterior();
 }
 // ============================= escucha de teclas presionadas para el movimiento 
 function listenPersonajeMovimiento() {
@@ -453,7 +460,7 @@ function animate() {
  * agregando objetos
 /************************************************************************************************
 */
-function paredInterior(ancho, alto) {
+function paredInterior() {
     let paredGeo = new THREE.BoxGeometry(20 * 12, 20, 1);
     let paredMat = new THREE.MeshPhongMaterial({
         color: 0xF9E79F,
@@ -527,7 +534,7 @@ function crearTarima(ancho, grosor, x, z) {
 
 }
 function puertaAscensor() {
-    
+
 
     let texture = new THREE.TextureLoader().load('images/ascensor.png');
     let mat = new THREE.MeshPhongMaterial({ map: texture });
@@ -547,38 +554,38 @@ function puertaAscensor() {
     scene.add(ascensordos)
 
 }
-function pizarras(){
- let texture = new THREE.TextureLoader().load('images/pizarra.jpg');
+function pizarras() {
+    let texture = new THREE.TextureLoader().load('images/pizarra.jpg');
     let mat = new THREE.MeshPhongMaterial({ map: texture });
     let geo = new THREE.BoxGeometry(3, 40, 80 * 2);
 
     let pizarraa = new THREE.Mesh(geo, mat);
-    pizarraa.position.set(-450, 40 , -220);
+    pizarraa.position.set(-450, 40, -220);
     scene.add(pizarraa)
     let pizarrab = new THREE.Mesh(geo, mat);
-    pizarrab.position.set(-120, 40 , -270);
+    pizarrab.position.set(-120, 40, -270);
     scene.add(pizarrab)
     let pizarrac = new THREE.Mesh(geo, mat);
-    pizarrac.position.set(-440, 40 , 50);
+    pizarrac.position.set(-440, 40, 50);
     scene.add(pizarrac)
 }
 function casilleros() {
     var materials = [
         new THREE.MeshPhongMaterial({
             // THREE.TextureLoader().load(
-            map:  new THREE.TextureLoader().load('images/casilleros.jpg')
+            map: new THREE.TextureLoader().load('images/casilleros.jpg')
         }),
         new THREE.MeshPhongMaterial({
-            map:  new THREE.TextureLoader().load('images/casilleros.jpg')
+            map: new THREE.TextureLoader().load('images/casilleros.jpg')
         }),
         new THREE.MeshLambertMaterial({
-            map:  new THREE.TextureLoader().load('images/casillerosp.jpg')
+            map: new THREE.TextureLoader().load('images/casillerosp.jpg')
         }),
         new THREE.MeshLambertMaterial({
-            map:  new THREE.TextureLoader().load('images/casillerosp.jpg')
+            map: new THREE.TextureLoader().load('images/casillerosp.jpg')
         }),
         new THREE.MeshLambertMaterial({
-            map:  new THREE.TextureLoader().load('images/casillerosp.jpg')
+            map: new THREE.TextureLoader().load('images/casillerosp.jpg')
         }),
         new THREE.MeshLambertMaterial({
             map: new THREE.TextureLoader().load('images/casillerosp.jpg')
@@ -674,7 +681,8 @@ function puertas() {
     crearPuerta(2, 20, -210, -20);
     crearPuerta(20, 2, -180, -30);
 
-    crearPuerta(20, 2, 0, -30);
+    let puerti = crearPuerta(20, 2, 0, -30);
+    colisionObjetos.push(puerti)
 
 }
 function crearPuerta(ancho, grosor, x, z) {
@@ -687,6 +695,7 @@ function crearPuerta(ancho, grosor, x, z) {
     puerta.position.z = z
     puerta.position.y = 50 / 2
     scene.add(puerta)
+    return puerta;
 }
 
 function ventanas() {
@@ -769,7 +778,56 @@ function crearPersiana(ancho, x, z) {
 
 }
 
+function silla_ba(x, z,) {
 
+    let obj;
+    let loader = new THREE.JSONLoader();
+    loader.load('js/alba/silamoderna.json', function (g, m) {// a
+        const alto = 30;// a
+        const ancho = 25;// a
+
+        obj = new THREE.Mesh(g, m);
+        obj.scale.set(ancho, alto, ancho);// a
+
+        obj.position.x = x;// a
+        obj.position.y = 2;// a
+        obj.position.z = z;// a
+
+        obj.rotation.y = degreesToRadians(110);
+
+        scene.add(obj);
+
+        colisionObjetos.push(obj);
+    });
+}
+
+function silla_bm(x, z) {
+
+    let obj;
+    let loader = new THREE.JSONLoader();
+    loader.load('js/mamani/silla.json', function (g, m) {// a
+        const alto = 15;// a
+        const ancho = 20;// a
+
+        obj = new THREE.Mesh(g, m);
+        obj.scale.set(ancho, alto, ancho);// a
+
+        obj.position.x = x;// a
+        obj.position.y = 15 / 2;// a
+        obj.position.z = z;// a
+
+        obj.rotation.y = degreesToRadians(270);
+
+        scene.add(obj);
+
+        colisionObjetos.push(obj);
+        // console.log(colisionObjetos.length)
+    });
+
+}
+/**
+ * 
+ */
 function agregarObjetos() {
     puertaAscensor();
     puertas();
@@ -792,7 +850,7 @@ function onWindowResize() {
 //  Colisiones
 
 function detectaColision() {
-    const PERSONAJECOLISIONDISTANCIA = 20;
+    const PERSONAJECOLISIONDISTANCIA = 40;
     // The rotation matrix to apply to our direction vector
     // Undefined by default to indicate ray should coming from front
     var rotationMatrix;
@@ -844,10 +902,10 @@ function rayIntersect(ray, distancia) {
 
 
 
-
+// 
 /*
 
-
+// 
 
 
 

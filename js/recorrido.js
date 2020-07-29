@@ -154,7 +154,7 @@ function divMapa() {
         [1, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 1, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         [1, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 1, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         [1, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 1, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-        [1, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 1, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+        [1, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 1, 7, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         [1, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 1, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         [1, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 1, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         [1, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 1, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
@@ -166,11 +166,11 @@ function divMapa() {
         [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1],
         [1, 5, 6, 6, 6, 6, 6, 6, 5, 6, 6, 6, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1],
         [1, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1],
-        [1, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 1, 6, 6, 1, 1, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 2, 1],
-        [1, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 5, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1],
+        [1, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 1, 6, 6, 1, 1, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 2, 1],
+        [1, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 5, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1],
         [1, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1],
         [1, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1],
-        [1, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1],
+        [1, 7, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1],
         [1, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1],
         [1, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1],
         [1, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1],
@@ -179,7 +179,7 @@ function divMapa() {
         [1, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1],
         [1, 5, 6, 6, 6, 6, 6, 6, 5, 6, 6, 6, 6, 6, 6, 5, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1],
         [1, 1, 1, 4, 4, 1, 4, 4, 1, 1, 4, 1, 4, 4, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1],
-        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 7, 2, 2, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 2, 2, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1],
         [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1],
         [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1],
         [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1],
@@ -243,7 +243,7 @@ function divMapa() {
                     paredbaja.position.y = alto / 2;
                     // console.log("=>" + pared.position.x + " / " + pared.position.y + " / " + pared.position.z)
                     scene.add(paredbaja);
-                    // colisionObjetos.push(paredbaja);
+                    colisionObjetos.push(paredbaja);
                     let paredalta = new THREE.Mesh(paredGeoAlta, paredMat2);
                     paredalta.position.x = posx;
                     paredalta.position.z = posz
@@ -268,7 +268,7 @@ function divMapa() {
                         //   let pupitre=silla_aa(posx, posz) 
                         silla_aa(posx, posz)
                     }
-                    if ((i == 11) &&  (j >= 20 && j <= 25) && (j % 2 == 1)) {
+                    if ((i == 11) && (j >= 20 && j <= 25) && (j % 2 == 1)) {
                         //   let pupitre=silla_aa(posx, posz) 
                         silla_aa(posx, posz)
                     }
@@ -325,7 +325,7 @@ function divMapa() {
 
         }
     }
-console.log(colisionObjetos.length)
+    console.log(colisionObjetos.length)
     paredInterior(20, 60);
 }
 // ============================= escucha de teclas presionadas para el movimiento 
@@ -527,6 +527,7 @@ function crearTarima(ancho, grosor, x, z) {
 
 }
 function puertaAscensor() {
+    
 
     let texture = new THREE.TextureLoader().load('images/ascensor.png');
     let mat = new THREE.MeshPhongMaterial({ map: texture });
@@ -546,28 +547,43 @@ function puertaAscensor() {
     scene.add(ascensordos)
 
 }
+function pizarras(){
+ let texture = new THREE.TextureLoader().load('images/pizarra.jpg');
+    let mat = new THREE.MeshPhongMaterial({ map: texture });
+    let geo = new THREE.BoxGeometry(3, 40, 80 * 2);
 
-function casilleros(){
+    let pizarraa = new THREE.Mesh(geo, mat);
+    pizarraa.position.set(-450, 40 , -220);
+    scene.add(pizarraa)
+    let pizarrab = new THREE.Mesh(geo, mat);
+    pizarrab.position.set(-120, 40 , -270);
+    scene.add(pizarrab)
+    let pizarrac = new THREE.Mesh(geo, mat);
+    pizarrac.position.set(-440, 40 , 50);
+    scene.add(pizarrac)
+}
+function casilleros() {
     var materials = [
         new THREE.MeshPhongMaterial({
-            map: THREE.ImageUtils.loadTexture('images/casilleros.jpg')
+            // THREE.TextureLoader().load(
+            map:  new THREE.TextureLoader().load('images/casilleros.jpg')
         }),
         new THREE.MeshPhongMaterial({
-            map: THREE.ImageUtils.loadTexture('images/casilleros.jpg')
+            map:  new THREE.TextureLoader().load('images/casilleros.jpg')
         }),
         new THREE.MeshLambertMaterial({
-            map: THREE.ImageUtils.loadTexture('images/casillerosp.jpg')
+            map:  new THREE.TextureLoader().load('images/casillerosp.jpg')
         }),
         new THREE.MeshLambertMaterial({
-            map: THREE.ImageUtils.loadTexture('images/casillerosp.jpg')
+            map:  new THREE.TextureLoader().load('images/casillerosp.jpg')
         }),
         new THREE.MeshLambertMaterial({
-            map: THREE.ImageUtils.loadTexture('images/casillerosp.jpg')
+            map:  new THREE.TextureLoader().load('images/casillerosp.jpg')
         }),
         new THREE.MeshLambertMaterial({
-            map: THREE.ImageUtils.loadTexture('images/casillerosp.jpg')
+            map: new THREE.TextureLoader().load('images/casillerosp.jpg')
         })
-     ];
+    ];
 
 
     // let texture = new THREE.TextureLoader().load('images/casilleros.jpg');
@@ -575,35 +591,35 @@ function casilleros(){
     let geo = new THREE.BoxGeometry(10, 50, 20 * 2);
 
     let casilleroa = new THREE.Mesh(geo, materials);
-    casilleroa.position.set(195,50/2,190);
+    casilleroa.position.set(195, 50 / 2, 190);
     scene.add(casilleroa)
 
     let casillerob = new THREE.Mesh(geo, materials);
-    casillerob.position.set(195,50/2,140);
+    casillerob.position.set(195, 50 / 2, 140);
     scene.add(casillerob)
     let casilleroc = new THREE.Mesh(geo, materials);
-    casilleroc.position.set(195,50/2,90);
+    casilleroc.position.set(195, 50 / 2, 90);
     scene.add(casilleroc)
     let casillerod = new THREE.Mesh(geo, materials);
-    casillerod.position.set(195,50/2,40);
+    casillerod.position.set(195, 50 / 2, 40);
     scene.add(casillerod)
     let casilleroh = new THREE.Mesh(geo, materials);
-    casilleroh.position.set(195,50/2,340);
+    casilleroh.position.set(195, 50 / 2, 340);
     scene.add(casilleroh)
 
     let casilleroe = new THREE.Mesh(geo, materials);
-    casilleroe.position.set(285,50/2,140);
+    casilleroe.position.set(285, 50 / 2, 140);
     scene.add(casilleroe)
     let casillerof = new THREE.Mesh(geo, materials);
-    casillerof.position.set(285,50/2,90);
+    casillerof.position.set(285, 50 / 2, 90);
     scene.add(casillerof)
     let casillerog = new THREE.Mesh(geo, materials);
-    casillerog.position.set(285,50/2,40);
+    casillerog.position.set(285, 50 / 2, 40);
     scene.add(casillerog)
     let casilleroi = new THREE.Mesh(geo, materials);
-    casilleroi.position.set(420,50/2,330);
+    casilleroi.position.set(420, 50 / 2, 330);
     scene.add(casilleroi)
-   
+
 }
 function puertas() {
 
@@ -752,6 +768,8 @@ function crearPersiana(ancho, x, z) {
     scene.add(persiana)
 
 }
+
+
 function agregarObjetos() {
     puertaAscensor();
     puertas();
@@ -759,7 +777,7 @@ function agregarObjetos() {
     persianas();
     tarimas();
     casilleros();
-
+    pizarras()
 }
 
 function onWindowResize() {
